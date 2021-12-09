@@ -1,0 +1,26 @@
+Package: manuscriptIL23R
+Title: Plotting and tumor-handling functions for the IL23R Manuscript/Project
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Andrew",
+           family = "Wight",
+           role = c("aut", "cre"),
+           email = "AndrewE_Wight@dfci.harvard.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Contains multiple functions to make standardized plots of tumor 
+             growth data and flow cytometry data. These are collected here in 
+             this package so that I can easily add them to new analyses and/or 
+             share code as required.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports:
+    ggplot2 (>= 3.3.5),
+    ggcyto (>= 1.22.0)
+Depends:
+    R (>= 4.1)

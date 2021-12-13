@@ -20,7 +20,8 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports:
+    ggcyto(>= 1.22.0),
     ggplot2 (>= 3.3.5),
-    ggcyto (>= 1.22.0)
+    ggpubr (>= 0.4.0)
 Depends:
     R (>= 4.1)

@@ -26,31 +26,33 @@
 #'
 #' @return A ggplot object containing the plotted FACS data
 #'
-#' @import ggplot2 ggcyto
+#' @importFrom ggcyto %+%
 #' @export
 #'
-plotFACSExample <- function(data, x, y, gate, bins = 30, fontFix = TRUE, flowFix = TRUE){
-  gg <- ggcyto(data, aes(!!x, !!y)) +
-    geom_density2d(bins = bins, colour = "black", alpha = 0.5) +
-    geom_gate(gate, colour = "black", alpha = 0.7) +
-    geom_stats(adjust = 0.9) +
-    theme_pubr() +
-    theme(legend.position = "none",
-          title = element_blank())
-  gg <- as.ggplot(gg)
+plotFACSExample <- function(data, x, y, gate, bins = 30, fontFix = TRUE,
+                            flowFix = TRUE){
+  gg <- ggcyto::ggcyto(data, ggplot2::aes(!!x, !!y)) +
+    ggplot2::geom_density2d(bins = bins, colour = "black", alpha = 0.5) +
+    ggcyto::geom_gate(gate, colour = "black", alpha = 0.7) +
+    ggcyto::geom_stats(adjust = 0.9) +
+    ggpubr::theme_pubr() +
+    ggplot2::theme(legend.position = "none",
+                   title = ggplot2::element_blank())
+  gg <- ggcyto::as.ggplot(gg)
 
   if(fontFix == TRUE){
     gg <- gg +
-      theme(text = element_text(size = 10, family = "TT Arial"),
-            title = element_text(size = 10))
+      ggplot2::theme(text = ggplot2::element_text(size = 10,
+                                                  family = "TT Arial"),
+                     title = ggplot2::element_text(size = 10))
   }
 
   if(flowFix == TRUE){
     gg <- gg +
-      theme(strip.background = element_blank(),
-            strip.text = element_blank(),
-            title = element_blank(),
-            axis.text = element_blank())
+      ggplot2::theme(strip.background = ggplot2::element_blank(),
+                     strip.text = ggplot2::element_blank(),
+                     title = ggplot2::element_blank(),
+                     axis.text = ggplot2::element_blank())
   }
   return(gg)
 }

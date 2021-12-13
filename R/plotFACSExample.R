@@ -59,8 +59,6 @@ plotFACSExample <- function(data, x, y, gate, bins = 30, fontFix = TRUE,
 #'
 #' @examples
 #'
-#' if(interactive()){
-#'   plotFACSExample(gs[[1]], "FSC-A", "SSC-A", "Lymphocytes")
-#'   # Creates a nice plot of the Lymphocytes gate from the first GH in gs for
-#'   # use in publications.
-#' }
+#' path_to_gs <- system.file("extdata", package = "manuscriptIL23R")
+#' gs <- flowWorkspace::load_gs(paste0(path_to_gs, "/example.gs"))
+#' plotFACSExample(gs[[1]], "IFNg", "CD8a", "CD8 IFNg")

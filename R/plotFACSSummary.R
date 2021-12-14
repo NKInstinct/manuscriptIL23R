@@ -42,9 +42,10 @@
 plotFACSSummary <- function(data, filterPop, ylab, xGroup = .data$Genotype, fillGroup = NULL, fillScale = c("grey50", "black"),
                             ..., statbar = "nobar", fontFix = TRUE){
   xGroup <- ggplot2::enquo(xGroup)
-  if(!is.null(fillGroup)){
-    fillGroup <- ggplot2::enquo(fillGroup)
-  }
+  fillGroup <- ggplot2::enquo(fillGroup)
+  # if(!is.null(fillGroup)){
+  #   fillGroup <- ggplot2::enquo(fillGroup)
+  # }
 
   df <- data |>
     dplyr::filter(stringr::str_detect(.data$pop, filterPop))

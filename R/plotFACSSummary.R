@@ -51,7 +51,7 @@ plotFACSSummary <- function(data, filterPop, ylab, xGroup = .data$Genotype, fill
       ggplot2::geom_bar(stat = "summary", color = "black")
   }else{
     fillGroup <- ggplot2::enquo(fillGroup)
-    gg <- ggplot2::ggplot(df, ggplot2::aes(!!xGroup, .data$percent, fill = !!fillGroup)) +
+    gg <- ggplot2::ggplot(df, ggplot2::aes(!!xGroup, .data$percent, group = !!fillGroup, fill = !!fillGroup)) +
       ggplot2::stat_summary(geom = "errorbar", position = "dodge") +
       ggplot2::geom_bar(stat = "summary", color = "black", position = "dodge")
   }

@@ -43,13 +43,10 @@ plotFACSSummary <- function(data, filterPop, ylab, xGroup = .data$Genotype, fill
                             ..., statbar = "nobar", fontFix = TRUE){
   xGroup <- ggplot2::enquo(xGroup)
   fillGroup <- ggplot2::enquo(fillGroup)
-  # if(!is.null(fillGroup)){
-  #   fillGroup <- ggplot2::enquo(fillGroup)
-  # }
 
   df <- data |>
     dplyr::filter(stringr::str_detect(.data$pop, filterPop))
-  if(is.null(fillGroup)){
+  if(is.null(eval(fillGroup)[[2]])){
     gg <- ggplot2::ggplot(df, ggplot2::aes(!!xGroup, .data$percent, fill = !!xGroup)) +
       ggplot2::stat_summary(geom = "errorbar") +
       ggplot2::geom_bar(stat = "summary", color = "black")

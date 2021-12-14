@@ -36,29 +36,19 @@ plotFACSExample <- function(data, x, y, gate, bins = 30, fontFix = TRUE,
     ggcyto::geom_gate(gate, colour = "black", alpha = 0.7) +
     ggcyto::geom_stats(adjust = 0.9) +
     ggpubr::theme_pubr() +
-    ggplot2::theme(legend.position = "none",
-                   title = ggplot2::element_blank())
+    ggplot2::theme(legend.position = "none", title = ggplot2::element_blank())
+
   gg <- ggcyto::as.ggplot(gg)
 
-  if(fontFix == TRUE){
-    gg <- gg +
-      ggplot2::theme(text = ggplot2::element_text(size = 10,
-                                                  family = "TT Arial"),
-                     title = ggplot2::element_text(size = 10))
-  }
+  if(fontFix == TRUE){gg <- fontFix(gg)}
 
-  if(flowFix == TRUE){
-    gg <- gg +
-      ggplot2::theme(strip.background = ggplot2::element_blank(),
-                     strip.text = ggplot2::element_blank(),
-                     title = ggplot2::element_blank(),
-                     axis.text = ggplot2::element_blank())
-  }
+  if(flowFix == TRUE){gg <- flowFix(gg)}
+
   return(gg)
 }
 #'
 #' @examples
 #'
-#' path_to_gs <- system.file("extdata", package = "manuscriptIL23R")
-#' gs <- flowWorkspace::load_gs(paste0(path_to_gs, "/example.gs"))
+#' path_to_gs <- system.file("extdata", "example.gs", package = "manuscriptIL23R")
+#' gs <- flowWorkspace::load_gs(path_to_gs)
 #' plotFACSExample(gs[[1]], "IFNg", "CD8a", "CD8 IFNg")

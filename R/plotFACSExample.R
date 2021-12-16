@@ -44,7 +44,7 @@ plotFACSExample <- function(data, x, y, gate, bins = 30, fontFix = TRUE,
   gg <- ggcyto::ggcyto(data, ggplot2::aes(!!x, !!y)) +
     ggplot2::geom_density2d(bins = bins, colour = "black", alpha = 0.5) +
     ggcyto::geom_gate(gate, colour = "black", alpha = 0.7) +
-    ggcyto::geom_stats(adjust = stat$adjust, location = stat$location, size = stat$size) +
+    ggcyto::geom_stats(adjust = stat$adjust, location = stat$location, label.size = stat$size) +
     ggpubr::theme_pubr() +
     ggplot2::theme(legend.position = "none", title = ggplot2::element_blank())
 

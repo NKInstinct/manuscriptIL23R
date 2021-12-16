@@ -12,7 +12,8 @@ plotFACSExample(
   bins = 30,
   fontFix = TRUE,
   flowFix = TRUE,
-  stat = list(adjust = 0.5, location = "gate")
+  biex = "none",
+  stat = list(adjust = 0.5, location = "gate", size = 6)
 )
 }
 \arguments{
@@ -41,8 +42,14 @@ don't forget to do it!}
 by removing the faceting strips and axis numbers. Defaults to TRUE so you
 don't forget to do it!}
 
-\item{stat}{A length-2 named list containing "adjust" and "location"
-elements. See ?ggcyto::stat_position for help on how to set these.}
+\item{biex}{A string specifying which axes ("x", "y", or "both") to apply a
+default flowjo biex transform to. Leave it as "none" if you want no
+trasform OR if you want to apply a non-default one manually after the fact
+with scale_._flowjo_biex().}
+
+\item{stat}{A length-3 named list containing "adjust", "location", and "size"
+elements. See ?ggcyto::stat_position for help on how to set adjust and
+location. Size controls the text size.}
 }
 \value{
 A ggplot object containing the plotted FACS data

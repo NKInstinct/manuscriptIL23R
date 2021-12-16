@@ -4,7 +4,16 @@
 \alias{plotFACSExample}
 \title{Plot FACS data using pretty plotting defaults}
 \usage{
-plotFACSExample(data, x, y, gate, bins = 30, fontFix = TRUE, flowFix = TRUE)
+plotFACSExample(
+  data,
+  x,
+  y,
+  gate,
+  bins = 30,
+  fontFix = TRUE,
+  flowFix = TRUE,
+  stat = list(adjust = 0.5, location = "gate")
+)
 }
 \arguments{
 \item{data}{A GatingHierarchy (for one plot) or GatingSet (for multiple).
@@ -31,6 +40,9 @@ don't forget to do it!}
 \item{flowFix}{Boolean specifying whether the FACS plots should be cleaned up
 by removing the faceting strips and axis numbers. Defaults to TRUE so you
 don't forget to do it!}
+
+\item{stat}{A length-2 named list containing "adjust" and "location"
+elements. See ?ggcyto::stat_position for help on how to set these.}
 }
 \value{
 A ggplot object containing the plotted FACS data

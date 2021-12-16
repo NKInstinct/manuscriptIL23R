@@ -23,6 +23,8 @@
 #' @param flowFix Boolean specifying whether the FACS plots should be cleaned up
 #'   by removing the faceting strips and axis numbers. Defaults to TRUE so you
 #'   don't forget to do it!
+#' @param stat A length-2 named list containing "adjust" and "location"
+#'   elements. See ?ggcyto::stat_position for help on how to set these.
 #'
 #' @return A ggplot object containing the plotted FACS data
 #'
@@ -30,11 +32,12 @@
 #' @export
 #'
 plotFACSExample <- function(data, x, y, gate, bins = 30, fontFix = TRUE,
-                            flowFix = TRUE){
+                            flowFix = TRUE,
+                            stat = list("adjust" = 0.5, "location" = "gate")){
   gg <- ggcyto::ggcyto(data, ggplot2::aes(!!x, !!y)) +
     ggplot2::geom_density2d(bins = bins, colour = "black", alpha = 0.5) +
     ggcyto::geom_gate(gate, colour = "black", alpha = 0.7) +
-    ggcyto::geom_stats(adjust = 0.9) +
+    ggcyto::geom_stats(adjust = stat$adjust, location = stat$location) +
     ggpubr::theme_pubr() +
     ggplot2::theme(legend.position = "none", title = ggplot2::element_blank())
 

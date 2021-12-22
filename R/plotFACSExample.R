@@ -27,9 +27,9 @@
 #'   default flowjo biex transform to. Leave it as "none" if you want no
 #'   trasform OR if you want to apply a non-default one manually after the fact
 #'   with scale_._flowjo_biex().
-#' @param stat A length-3 named list containing "adjust", "location", and "size"
-#'   elements. See ?ggcyto::stat_position for help on how to set adjust and
-#'   location. Size controls the text size.
+#' @param ... Additional arguments to pass to geom_stats. "adjust", "position",
+#'   "size", and "type" are all useful here. See stat_position for info about
+#'   adjust and position.
 #'
 #' @return A ggplot object containing the plotted FACS data
 #'
@@ -37,14 +37,11 @@
 #' @export
 #'
 plotFACSExample <- function(data, x, y, gate, bins = 30, fontFix = TRUE,
-                            flowFix = TRUE, biex = "none",
-                            stat = list("adjust" = 0.5,
-                                        "location" = "gate",
-                                        "size" = 6)){
+                            flowFix = TRUE, biex = "none", ...){
   gg <- ggcyto::ggcyto(data, ggplot2::aes(!!x, !!y)) +
     ggplot2::geom_density2d(bins = bins, colour = "black", alpha = 0.5) +
     ggcyto::geom_gate(gate, colour = "black", alpha = 0.7) +
-    ggcyto::geom_stats(adjust = stat$adjust, location = stat$location, size = stat$size) +
+    ggcyto::geom_stats(...) +
     ggpubr::theme_pubr() +
     ggplot2::theme(legend.position = "none", title = ggplot2::element_blank())
 
